@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <h1>TODO App</h1>
+    <form action="/create-todo" method="post">
+        <div class="about-todo">
+            <div id="description-text" class="items-head">DESCRIPTION</div>
+            <input name="description" type="text" placeholder="what you need to do?" required>
+        </div>
+        <div class="about-todo-category">
+                <div id="category">
+                    <div id="category-text" class="items-head">Category</div>
+                    <select name="category" id="" required >
+                        <option value="" selected>Choose a category </option>
+                        <option value="personal">Personal</option>
+                        <option value="school">School</option>
+                        <option value="work">Work</option>
+                        <option value="cleaning">cleaning</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div id="date">
+                    <div  id="date-text" class="items-head" >date</div>
+                    <input name="date" type="date" required>
+                </div>  
+        </div>
+        <button type="submit" id="add-task-btn"><i class="fa-solid fa-plus"></i>Add Task</button>
+        <button id="delete-btn"><i class="fa-solid fa-trash-can"></i>delete Task</button>
+
+    </form>
+
+
+
+<!-- list of todo tasks -->
+
+<ul id=" task-list">
+   <% for(let i of todoData){ %>
+    <li><input type="checkbox" class="checkbox" data-todoid=<%= i._id %> ><div id="show-desc-date"><div id="task-desc"><%=i.description%></div><div id="task-date"><i class="fa-regular fa-calendar-days"></i><%=i.date%></div></div><div id="task-category"><%=i.category%></div></li>
+
+   <% } %>
+</ul>
+
+<script src="https://kit.fontawesome.com/51457f5ad9.js" crossorigin="anonymous"></script>
+<script src="todoapp.js" ></script>
+</body>
+</html>
