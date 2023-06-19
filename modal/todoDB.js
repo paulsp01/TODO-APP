@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// create schema
 const todoschema = new mongoose.Schema({
 
     description:{

@@ -6,6 +6,8 @@ const todoAppDB = require('./modal/todoDB');
 
 const app = express();
 
+// set view engine ejs
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json({limit:'1mb'}));
@@ -13,6 +15,7 @@ app.use(express.urlencoded());
 
 app.use(express.static('asset'));
 
+// handel get request
 app.get('/', function(request, response){
 todoAppDB.find({}).then((data)=>{
    
@@ -25,7 +28,7 @@ todoData:data
 });
 
 
-
+// create todo by post request 
 app.post('/create-todo', function(request, response){
 todoAppDB.create({
     description:request.body.description,
@@ -37,6 +40,7 @@ todoAppDB.create({
 return response.redirect('back');
 });
 
+// delete todo by post request 
 
 app.post("/delete-todo", (req, res) => {
     const dataArray = req.body.checkedIds;
@@ -55,7 +59,7 @@ app.post("/delete-todo", (req, res) => {
 
 
 
-
+// setup port
 
 app.listen(port, (err)=>{
     if(err){
