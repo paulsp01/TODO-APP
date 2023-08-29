@@ -19,5 +19,5 @@ date:{
 }
 });
 
-const todoAppDB = mongoose.model('todoAppDB', todoschema);
- module.exports = todoAppDB;
+const TodoAppDB = mongoose.model('TodoAppDB', todoschema);
+ module.exports = TodoAppDB;

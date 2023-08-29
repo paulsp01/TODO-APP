@@ -1,8 +1,10 @@
 const express = require('express');
+const expressLayot=require('express-ejs-layouts');
 const port = 8000;
 const path =require('path');
 const db = require('./config/mongoose');
 const todoAppDB = require('./modal/todoDB');
+
 
 const app = express();
 
@@ -19,8 +21,8 @@ app.use(express.static('asset'));
 app.get('/', function(request, response){
 todoAppDB.find({}).then((data)=>{
    
-     response.render('home', {
-todoData:data
+     return response.render('home', {
+         todoData:data
     })
 }).catch((err)=>console.log("err in creating todo"))
 
