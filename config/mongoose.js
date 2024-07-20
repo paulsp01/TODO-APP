@@ -1,19 +1,13 @@
-//require the library
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-//connect to the database
-mongoose.connect('mongodb://127.0.0.1/todo_DB');
+const uri =
+  "mongodb+srv://swarnalee1:Sp123@cluster0.mwwf0dx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-//acquire the connection(to check if it's successful)
-const db = mongoose.connection;
-
-//error
-db.on('error', function(err) { console.log(err.message); });
-
-//up and running then print the message
-db.once('open', function() {
-  
-    console.log("Successfully connected to the database");
-
-});
-
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Successfully connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
